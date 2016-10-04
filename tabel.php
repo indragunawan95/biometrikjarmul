@@ -64,9 +64,9 @@ $Key="0";
 		$PIN2=Parse_Data($dataUser,"<PIN>","</PIN>");
 		$Name=Parse_Data($dataUser,"<Name>","</Name>");
 
-
-		$timeStart = new DateTime($DateTime);
-		$timeNow = new DateTime("now");
+		date_default_timezone_set('Asia/Bangkok');
+		$timeStart = strtotime($DateTime);
+		$timeNow = time(new DateTime("now"));
 		//var_dump($timeNow);
 		// $diff = date_diff($timeStart, $timeNow);
 		// echo $diff->format("mm:ss");
@@ -75,8 +75,20 @@ $Key="0";
 		// if($timeStart<$timeNow){
 		// 	echo "lalalal";
 		// }
-		$interval = date_create('now')->diff($DateTime);
+		$interval = ($timeNow-$timeStart);
+		$date = new DateTime();
+		echo $date->getTimestamp();
+		echo "    ";
+		print_r($timeStart);
+		echo "    ";
+		print_r($timeNow);
+		echo "    ";
 		print_r($interval);
+
+		if($interval<0){
+			$redirect = 1;
+			header('Location: /PHP-soap-baru/index.php'); 
+		}
 
 	
 	?>
@@ -91,3 +103,4 @@ $Key="0";
 
 	?>
 	</table>
+

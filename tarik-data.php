@@ -14,21 +14,34 @@ libs/jquery/1.3.0/jquery.min.js"></script>
 
 
 	<div id="tableHolder">
-	
+	<?php $redirect = 1;?>
 	</div>
 
 </body>
 <script type="text/javascript">
-	
+	 
+   var redir = <?php echo $redirect ?>;
     $(document).ready(function(){
-      refreshTable();
+      if(redir==1){
+          redirect();
+      }
+      else{
+          refreshTable();
+      }
+      
     });
 
     function refreshTable(){
         $('#tableHolder').load('tabel.php', function(){
            setTimeout(refreshTable, 500);
         });
+
     }
+    function redirect(){
+        $('#tableHolder').load('index.php', function(){
+           
+        });
+      }
 </script>
 
 
