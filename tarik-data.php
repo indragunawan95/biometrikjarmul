@@ -15,6 +15,7 @@ libs/jquery/1.3.0/jquery.min.js"></script>
 
 	<div id="tableHolder">
 	<?php $redirect = 1;?>
+  
 	</div>
 
 </body>
@@ -38,9 +39,7 @@ libs/jquery/1.3.0/jquery.min.js"></script>
 
     }
     function redirect(){
-        $('#tableHolder').load('index.php', function(){
-           
-        });
+        $(location).attr('href', 'http://localhost/PHP-soap-baru/index.php');
       }
 </script>
 
